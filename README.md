@@ -601,28 +601,28 @@ The copyright of this report belongs to Tencent. The report is only for referenc
 ### 10.1 Author's Unit
 
 **<u>Tencent AI Lab</u>**
-Baoyuan Wu (baoyuanwu@tencent.com) 
-Yanbo Fan (yanbofan@tencent.com) 
-Yong Zhang (norriszhang@tencent.com) 
-Yiming Li (georgli@tencent.com) 
-Zhifeng Li (michaelzfli@tencent.com) 
-Wei Liu (vincentwliu@tencent.com)
+* Baoyuan Wu (baoyuanwu@tencent.com) 
+* Yanbo Fan (yanbofan@tencent.com) 
+* Yong Zhang (norriszhang@tencent.com) 
+* Yiming Li (georgli@tencent.com) 
+* Zhifeng Li (michaelzfli@tencent.com) 
+* Wei Liu (vincentwliu@tencent.com)
 
 <br>
 
 **<u>Zhuque Laboratory of Tencent Security Platform Department</u>**
-vikingli (vikingli@tencent.com) 
-jifengzhu (jifengzhu@tencent.com) 
-allenszchen (allenszchen@tencent.com) 
-ucasjhxu (ucasjhxu@tencent.com) 
-dylandi (dylandi@tencent.com) 
-xunsu (xunsu@tencent.com)
+* vikingli (vikingli@tencent.com) 
+* jifengzhu (jifengzhu@tencent.com) 
+* allenszchen (allenszchen@tencent.com) 
+* ucasjhxu (ucasjhxu@tencent.com) 
+* dylandi (dylandi@tencent.com) 
+* xunsu (xunsu@tencent.com)
 
 <span id = "about-us"></span>
 
 ### 10.1 About Us
 
-**<u>Tencent AI Lab</u>**
+**<u>Tencent AI Lab</u>**<br>
 Tencent AI Lab is Tencent's enterprise AI Lab, which was established in Shenzhen in April 2016. With the help of Tencent's long-term accumulation of rich application scenarios, big data, computing power and first-class talents, AI Lab is based on the future, open and cooperative, and is committed to continuously improving AI's understanding, decision-making and creativity, moving towards the vision of "make AI everywhere".
 
 <br>
@@ -633,7 +633,7 @@ Tencent AI Lab is Tencent's enterprise AI Lab, which was established in Shenzhen
 
 <br>
 
-**<u>Zhuque Laboratory of Tencent Security Platform Department</u>**
+**<u>Zhuque Laboratory of Tencent Security Platform Department</u>**<br>
 Zhuque Laboratory of Tencent security platform department focuses on the research of combat level comprehensive attack and AI security technology, in order to promote attack and defense, pre-research the potential risks of cutting-edge technology and the company's business, and protect Tencent's business and user security.
 
 <br>
