@@ -145,7 +145,7 @@ For instance, attackers can inject malicious instructions into model files by ex
 
 **<span id = "figure-7">*<u>Figure-7: From left to right are the images of target test that hope to be divided into the wrong ones, the poisoned training sample 1, the poisoned training sample 2 **[[13](#ref-13)]**.</u>*</span>**
 
-<img src="img/3-1-1.png" alt="Figure. 7" width="50%" />![Figure. 7](img/3-1-1.png)
+<img src="img/3-1-1.png" alt="Figure. 7" width="50%" />
 
 <br>
 
@@ -177,7 +177,7 @@ Backdoor Attack is an emerging attack method against machine learning models. An
 
 **<span id = "figure-8">*<u>Figure-8: Schematic diagram of backdoor attack based on data poisoning **[[21](#ref-21)]**.</u>*</span>**
 
-<img src="img/3-2-1.png" alt="Figure. 8" width="50%" />![Figure. 8](img/3-2-1.png)
+<img src="img/3-2-1.png" alt="Figure. 8" width="50%" />
 
 <br>
 
@@ -201,6 +201,8 @@ At present, the trigger of a backdoor attack can reach an invisible level of hum
 
 ## 4. Model Training
 
+<span id = "Data-Recovery-In-Gradient"></span>
+
 ### 4.1 Data Recovery in Gradient
 
 At present, in order to solve the data privacy and other security problems in model training, distributed distributed is often adopted to train the model in industry. Specifically, the model will be stored in the central server. During each iterative training, the central server transmits the model to the distributed terminal server, where the local data is used to calculate the gradient, and then the gradient is transmitted back to the central server to update the model parameters **[[47](#ref-47)]**. Since the data is always kept at the terminal, the central server cannot directly access the data, which can protect the data privacy. But the latest research shows that it is not subtle enough to transmit gradient information only. As shown in **[Figure. 9](#figure-9)**, the trainer can recover the original training data from the gradient. In this way, even in a distributed computing framework, the central server can achieve the purpose of stealing data. As shown in **[Figure. 10](#figure-10)**, the data recovered in this way has a high degree of authenticity, which may bring great losses to the customers
@@ -213,12 +215,137 @@ At present, in order to solve the data privacy and other security problems in mo
 
 **<span id = "figure-9">*<u>Figure-9: Schematic diagram of recovering data from gradient **[[48](#ref-48)]**.</u>*</span>**
 
-<img src="img/4-1-1.png" alt="Figure. 9" width="50%" />![Figure. 9](img/4-1-1.png)
+<img src="img/4-1-1.png" alt="Figure. 9" width="50%" />
 
 **<span id = "figure-10">*<u>Figure-10: Gradient-based Data Recovery effect in CIFAR-10 Data Set **[[48](#ref-48)]**.</u>*</span>**
 
-<img src="img/4-1-2.png" alt="Figure. 10" width="50%" />![Figure. 10](img/4-1-2.png)
+<img src="img/4-1-2.png" alt="Figure. 10" width="50%" />
 
+<br>
+
+<span id = "Initial-Weight-Modification"></span>
+
+### 4.2 Initial Weight Modification
+
+The training of neural network is essentially to solve the optimization problem, and its final result is usually independent of the selection of initial values. However, the latest research shows that using a specific method to initialize the weight of the network can significantly increase the number of iterations, thus increasing the training time **[[49](#ref-49)]**, prolonging the product iteration cycle, and causing huge economic losses. This kind of attack method is very special and hidden, users can hardly detect it.
+
+<br>
+
+As shown in **[Figure. 11](#figure-11)**, the attacker can initialize the weight of a specific position to a minimum value, so that the eigenvector obtained after several layers of forward propagation is almost zero, which leads to the minimum training gradient calculated in the back-propagation process and makes it difficult for the network to learn. The attacker can implement this attack by modifying the default initialization method.
+
+<br>
+
+**<u>Defense suggestions:</u>** Check the initialization mechanism of weights.
+
+<br>
+
+**<span id = "figure-11">*<u>Figure-11: Hazard mechanism of weight modification **[[49](#ref-49)]**.</u>*</span>**
+
+<img src="img/4-3-1.png" alt="Figure. 11" width="50%" />
+
+<br>
+
+<span id = "Code-Attack"></span>
+
+### 4.3 Code Attack
+
+In the training phase of the network, the attacker can mislead the training process by controlling the developer's machine for code attack. Code attack mainly uses methods like malicious tampering with configuration information, hijacking compilation process, and log error inducement, to make the actual code executed or called by users inconsistent with the preset code. This kind of attack makes the key parameters or logic in the training process manipulated by the attacker, which seriously affects the result of network training and brings great obstacles to the product development process. Specifically, malicious tampering with the configuration information refers to manipulating the storage area corresponding to the parameters from the memory when reading the configuration file, and then modifying the parameter configuration, thus affecting the final training model. Specifically, when training large-scale neural networks, users will load training configuration information such as example, hyper parameter, data model address from a specific file (such as.py, .json, etc.). By changing these parameters, attackers can have a significant impact on the final training effect of the network. In addition, because the training of neural networks is generally a "black box problem", researchers tend to attribute the bad results to the design of the network, and will not be aware of the impact of such attacks.
+
+<br>
+
+Hijacking compilation process means that, in addition to directly tampering with the super parameters, through code injection, the attacker Hook the ReadFile class function of the program during the compilation process, replaces the original code to result in the generation of machine code with the specified function of the attacker. In this way, the actual code logic, network structure and even training data of the training program will deviate from the user's preset, which will have a great impact on the results. Similarly, it is also difficult for AI researchers to trace such security risks.
+Network trainers often use Tensorboard to monitor the training process of the model. Log error induction refers to that an attacker exploits the vulnerability in Tensorboard visualization or MITM man-hijacking attack to invade and tamper with the data information in the protocol transmission, making the network training curve on the monitor inconsistent with the reality. According to the wrong experimental results, researchers will make wrong decisions, which will mislead the follow-up research direction and bring great obstacles to the product development process.
+
+<br>
+
+**<u>Defense suggestions:</u>** Strengthen the security protection measures for the network security infrastructure, update the software patch version in time, and strengthen the security inspection of the third-party library and model file.
+
+<br>
+
+<span id = "Training-Backdoor-Attack"></span>
+
+### 4.4 Training Backdoor Attack
+
+Training a good deep learning model often requires a lot of computing resources. Therefore, many users choose to use the third-party platform for model training. This kind of uncontrollable training process also has the risk of being attacked by the back door. Specifically, since the training process is invisible to the users, the (malicious) third-party training platform can modify the training data set submitted by users during the training process, and implant the backdoor in the way similar to the data backdoor attack described in [Section 3.2](#Data-Backdoor-Attack) of this report.
+
+<br>
+
+**<u>Defense suggestions:</u>** Avoid using the risk of third-party computing platform for training; after obtaining the trained model, use the back door defense method described in [Section 3.2](#Data-Backdoor-Attack) of this report to check and eliminate the back door.
+
+<br>
+
+<span id = "Non-centralized-Scenarios"></span>
+
+### 4.5 Non-centralized Scenarios
+Federated learning is a distributed learning paradigm proposed to break the data island and realize AI cooperation in non-centralized scenarios. Participants can train the model locally without disclosing their own data and jointly maintain a global model. However, the distributed feature of Federated learning makes it the most likely model to be attacked by data poisoning. Attackers can control multiple participants to poison data locally to achieve the impact on the global model.
+
+<br>
+
+In terms of attack purposes, attacks against federated learning can be divided into the following three types: (1) data poisoning attack can greatly reduce the accuracy of the model **[[27](#ref-27),[52](#ref-52)]**; (2) Byzantine attack can make joint model unable to converge **[[27](#ref-27)]**; (3) backdoor attack **[[51](#ref-51),[52](#ref-52)]** can lead to malicious control of the model. The first two attacks will cause the waste of model training resources, while the backdoor attack may make the prediction results of the model manipulated by the attacker in a specific scenario, thus causing security risks.
+
+<br>
+
+**<span id = "figure-12">*<u>Figure-12: Left: poisoning mechanism for federal learning; Right: Byzantine attack principle **[[50](#ref-50)]**.</u>*</span>**
+
+<img src="img/4-2-1.png" alt="Figure. 12" width="50%" /><img src="img/4-2-3.png" alt="Figure. 12" width="50%" />
+
+<br>
+
+Specifically, as shown in **[Figure. 12](#figure-12)**, attackers can manipulate one or more participants to train with poison data locally, and then affect the gradient mean value of server node aggregation to realize backdoor attack **[[27](#ref-27)]**. In addition, if the training results of the model submitted by participants are completely arbitrary and unconstrained, Byzantine attacks may also occur, resulting in the failure in model convergence **[[27](#ref-27)]**. As shown in **[Figure. 12](#figure-12)**, the gradient estimates calculated by the normal participants (black dotted arrow) are distributed around the actual gradient (Blue Solid arrow) of the cost function. Malicious participants can give a vector far away from the normal gradient (red dotted arrow), thus affecting the convergence of the model **[[50](#ref-50)]**.
+
+<br>
+
+**<u>Defense suggestions for poisoning attack:</u>** Set the update norm threshold of the model and ignore the updates that exceed the threshold, limit the update ability of each participant by using standardized tailoring, and add a small amount of noise to the updated value of the model by (weak) differential privacy method **[[51](#ref-51)]**.
+
+<br>
+
+**<u>Defense suggestion for Byzantine attack:</u>** Using Krum algorithm to alleviate Byzantine attack by excluding "far" vectors **[[50](#ref-50)]**. Since this method introduces additional detection module, the convergence speed will be reduced compared with normal training.
+
+<br>
+
+<span id = "Model-Deployment"></span>
+
+## 5. Model Deployment
+
+<span id = "Data-Recovery-In-The-Model"></span>
+
+### 5.1 Data Recovery in the Model
+
+At present, many enterprises protect data security by only opening the model and hiding the training data. However, the latest research shows that it is still possible for attackers to recover the original training data by using the model. Specifically, the batch normalization layer contained in most networks takes the information of the training set image in the feature diagram. WIth this information, the attacker can restore the training data to the maximum extent **[[53](#ref-53)]**. The schematic diagram is shown in **[Figure. 13](#figure-13)**.
+
+<br>
+
+The research of this kind of attack and defense is still in its infancy, and there is no mature attack and defense means.
+
+<br>
+
+**<span id = "figure-13">*<u>Figure-13: Model-based data recovery mechanism **[[53](#ref-53)]**.</u>*</span>**
+
+<img src="img/5-1-1.png" alt="Figure. 13" width="50%" />
+
+<br>
+
+<span id = "Model-File-Attack"></span>
+
+### 5.2 Model File Attack
+
+The existing attacks on models are mostly achieved by modifying the data level. In fact, there are some attacks during the deployment phase by manipulating memory or modifying model files directly.  For example, the model files saved by various machine learning frameworks are serialized and stored on disk in a specific format, and the model hierarchy, data parameters, and other information can be obtained through reverse analysis. The attacker can modify a specific number of bits of data in the model to realize the backdoor function or disabled the model function. Compared with data poisoning, the link of direct manipulation model is shorter and faster, but it also requires the attacker to have higher control authority on the attacked model.
+
+<br>
+
+Deep learning frameworks such as Pytorch mostly use pickling serialization to store model structures and parameters. Attackers can embed malicious code when the model is saved and execute malicious commands automatically when the model is deserialized. In addition, the attacker can also modify the weight of specific neurons in the model file to crash the model performance **[[12](#ref-12)]** or insert the backdoor function. As shown in **[Figure. 14](#figure-14)**, based on the method in **[[11](#ref-11)]**, attackers can reduce the model accuracy from 70% to 0.1% by flipping 13 bits in 93m bit parameters. The attacker can even hide the malicious binary code content inside the model parameters and execute it at a specific time.
+
+<br>
+
+The research of this kind of attack is also in the early stage. The research on direct tampering model is seldom discussed in academic circles, but it is directly effective in actual scenes. In the algorithm, there is still a lot of room for discussion on how to accurately locate the modified key neuron information in the model.
+
+<br>
+
+**<span id = "figure-14">*<u>Figure-14: Bit flip attack mechanism **[[11](#ref-11)]**.</u>*</span>**
+
+<img src="img/5-2-1.png" alt="Figure. 14" width="50%" />
+
+<br>
 
 <span id = "Model-Usage"></span>
 
