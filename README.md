@@ -9,22 +9,22 @@
 * 2.3 [Hardware Backdoor Attack](#hardware-backdoor-attack)
 * 2.4 [Supply Chains Attack](#supply-chains-attack)
 
-6. [Model Usage](#Model Usage) 
+6. [Model Usage](#Model-Usage) 
 
-- 6.1 [Digital Adversarial Attacks](#Digital Adversarial Attacks)
-- 6.2 [Physical Counter Attack](#Physical Counter Attack)
-- 6.3 [Model Stealing](#Model Stealing)
-- 6.4 [GPU/CPU overflow destruction](#GPU/CPU overflow destruction)
+- 6.1 [Digital Adversarial Attacks](#Digital-Adversarial-Attacks)
+- 6.2 [Physical Counter Attack](#Physical-Counter-Attack)
+- 6.3 [Model Stealing](#Model-Stealing)
+- 6.4 [GPU/CPU overflow destruction](#GPU/CPU-overflow-destruction)
 
-7. [Model Architecture](#Model Architecture) 
+7. [Model Architecture](#Model-Architecture) 
 
-- 7.1 [Query Architecture Stealing](#Query Architecture Stealing)
-- 7.2 [Side Channel Architecture Stealing](#Side Channel Architecture Stealing)
+- 7.1 [Query Architecture Stealing](#Query-Architecture-Stealing)
+- 7.2 [Side Channel Architecture Stealing](#Side-Channel-Architecture Stealing)
 
-8. [Effect of results](#Effect of results)
+8. [Effect of results](#Effect-of-results)
 
-- 8.1 [Model Misjudgment](#Model Misjudgment)
-- 8.2 [Information Leakage](#Information Leakage)
+- 8.1 [Model Misjudgment](#Model-Misjudgment)
+- 8.2 [Information Leakage](#Information-Leakage)
 
 <br><br>
 
