@@ -339,7 +339,7 @@ For instance, attackers can inject malicious instructions into model files by ex
 
 <span id = "ref-112">[112] J. Sun, T. Chen, G. Giannakis, and Z. Yang, “Communication-efficient distributedlearning via lazily aggregated quantized gradients,” in NeurIPS, 2019.</span>
 
-<span id = "ref-113">[113]F. He, X. Huang, K. Lv, and J. Yang, “A communication-efficient distributed algorithmfor kernel principal component analysis,”arXiv preprint arXiv:2005.02664, 2020.</span>
+<span id = "ref-113">[113] F. He, X. Huang, K. Lv, and J. Yang, “A communication-efficient distributed algorithmfor kernel principal component analysis,”arXiv preprint arXiv:2005.02664, 2020.</span>
 
 
 
