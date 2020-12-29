@@ -23,19 +23,13 @@ To provide developers and users a better guidance on the security issues of AI s
 
 ![Figure. 1](img/1.png)
 
-
-
-
-
-
-
-
+<br><br><br><br>
 
 ## 2. Environment Access
 
+<br>
 
-
-
+<br>
 
 ### 2.1 Dependent Software Attack
 
@@ -47,9 +41,9 @@ Meanwhile,  attackers can also inject malicious codes into the model files used 
 
 <img src="img/2-1-1.png" alt="Figure. 2" width="40%" /><img src="img/2-1-2.png" alt="Figure. 2" width="50%" />
 
+<br>
 
-
-
+<br>
 
 ### 2.2 Malicious Access to Docker
 
@@ -59,9 +53,9 @@ Machine Learning tasks can be deployed in Kubernetes clusters via KubeFlow frame
 
 <img src="img/2-2-1.png" alt="Figure. 3" width="50%" /> <img src="img/2-2-2.png" alt="Figure. 3" width="33%" />
 
+<br>
 
-
-
+<br>
 
 ### 2.3 Hardware Backdoor Attack
 
@@ -73,9 +67,9 @@ So far, Hardware Backdoor Attack is still a newly emerging research area, and ex
 
 <img src="img/2-3-1.png" alt="Figure. 4" width="50%" />
 
+<br>
 
-
-
+<br>
 
 ### 2.4 Supply Chains Attack
 
