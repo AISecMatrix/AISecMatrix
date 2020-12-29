@@ -578,6 +578,72 @@ A good model is often supported by a lot of computational power in training and 
 
 In the medical or financial field, user data is extremely important resource. If leaked, it will cause serious privacy crisis and loss of business value. Because machine learning is data-driven, researchers usually use distributed methods to break data islands, unite data between enterprises, and ensure data security. However, in this scenario, it is still possible for the trainer to steal the content of the data terminal. In addition, if the project results are delivered in the form of model, the attacker may also recover the training data based on the model, which will cause privacy crisis.
 
+<br>
+
+<span id = "conclusion"></span>
+
+## 9. Conclusion
+
+At present, AI technology has been widely used in face payment, face security, speech recognition, machine translation and many other scenarios. The security of AI system has also attracted more and more attention in the industry. Malicious attacks against AI models can bring huge security risks to users. For example, an attacker could use a specially designed attack sticker to trick a facial recognition system, resulting in loss of life and property. Aiming at the security problems of AI model, this report, from the perspective of an attacker, summarizes the possible security risks in all aspects of the entire life cycle of AI model, and gives corresponding defense suggestions. This report not only includes common attacks such as software attack, Docker malicious access attack and supply chain attack, but also includes new attack methods such as counter attack and backdoor attack against AI model. It is helpful for AI development and technical operation personnel to understand the risk points and defense methods of AI system under the whole life cycle, and provide necessary technical support for the security deployment and application landing of AI system.
+
+<br>
+
+<span id = "copyright-and-risk-statement"></span>
+
+## 10. Copyright and Risk Statement
+
+The copyright of this report belongs to Tencent. The report is only for reference of general suggestions. Readers should not take any action according to any information in the report without specific professional suggestions. Tencent will not be responsible for any loss caused by using the information in this report.
+
+<br>
+
+<span id = "authors-unit"></span>
+
+### 10.1 Author's Unit
+
+**<u>Tencent AI Lab</u>**
+Baoyuan Wu (baoyuanwu@tencent.com) 
+Yanbo Fan (yanbofan@tencent.com) 
+Yong Zhang (norriszhang@tencent.com) 
+Yiming Li (georgli@tencent.com) 
+Zhifeng Li (michaelzfli@tencent.com) 
+Wei Liu (vincentwliu@tencent.com)
+
+<br>
+
+**<u>Zhuque Laboratory of Tencent Security Platform Department</u>**
+vikingli (vikingli@tencent.com) 
+jifengzhu (jifengzhu@tencent.com) 
+allenszchen (allenszchen@tencent.com) 
+ucasjhxu (ucasjhxu@tencent.com) 
+dylandi (dylandi@tencent.com) 
+xunsu (xunsu@tencent.com)
+
+<span id = "about-us"></span>
+
+### 10.1 About Us
+
+**<u>Tencent AI Lab</u>**
+Tencent AI Lab is Tencent's enterprise AI Lab, which was established in Shenzhen in April 2016. With the help of Tencent's long-term accumulation of rich application scenarios, big data, computing power and first-class talents, AI Lab is based on the future, open and cooperative, and is committed to continuously improving AI's understanding, decision-making and creativity, moving towards the vision of "make AI everywhere".
+
+<br>
+
+**<span id = "figure-25">*<u>Figure-25: Tencent AI lab
+
+<img src="img/ailab-logo.jpg" alt="Figure. 25" width="50%" />
+
+<br>
+
+**<u>Zhuque Laboratory of Tencent Security Platform Department</u>**
+Zhuque Laboratory of Tencent security platform department focuses on the research of combat level comprehensive attack and AI security technology, in order to promote attack and defense, pre-research the potential risks of cutting-edge technology and the company's business, and protect Tencent's business and user security.
+
+<br>
+
+**<span id = "figure-26">*<u>Figure-26: Zhuque Laboratory of Tencent Security Platform Department
+
+<img src="img/zhuque.png" alt="Figure. 26" width="50%" />
+
+<br>
+
 <span id = "reference"></span>
 
 ## Reference
