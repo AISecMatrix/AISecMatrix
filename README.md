@@ -174,7 +174,7 @@ At present, adversarial attacks are mainly concentrated in the field of computer
 
 **<span id = "figure-17">*<u>Figure-17</u>*</span>**
 
-![image-20201229132617223](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201229132617223.png)
+![img](https://docimg10.docs.qq.com/image/1sLHCUPQ35fI7CDudSkP1w?w=424&h=296)
 
 <center><b>Figure 17</b>: Targeted attack on audio text conversion[61]
 </center>
@@ -289,7 +289,7 @@ Recently, the research in this field is still in a very early stage, and there i
 
 <br><br>
 
-<span id = "QueryArchitecture-Stealing"></span>
+<span id = "Side-Channel-Architecture-Stealing"></span>
 
 ### **7.2  Side Channel Architecture Stealing**
 
