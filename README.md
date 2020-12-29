@@ -640,7 +640,7 @@ Zhuque Laboratory of Tencent security platform department focuses on the researc
 
 **<span id = "figure-26">*<u>Figure-26: Zhuque Laboratory of Tencent Security Platform Department</u>*</span>**
 
-<img src="img/zhuque.png" alt="Figure. 26" width="50%" />
+<img src="img/zhuque.png" alt="Figure. 26" width="35%" />
 
 <br>
 
