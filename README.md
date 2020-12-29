@@ -1,3 +1,7 @@
+[TOC]
+
+
+
 # AISecMatrix
 
 This is the github repository for ongoing project --- AISecMatrix （AI安全威胁矩阵）.
@@ -40,7 +44,7 @@ Meanwhile,  attackers can also inject malicious codes into the model files used 
 
 **<u>Tips for defense:</u>** seasonably check and update the reported security bugs in dependent softwares and libraries, avoding damage to AI systems induced by bugs exploitation.
 
-<img src="img/2-1-1.png" alt="Figure. 2" style="zoom: 33%;" /><img src="img/2-1-2.png" alt="Figure. 2" style="zoom: 33%;" />
+<img src="img/2-1-1.png" alt="Figure. 2" width="40%" /><img src="img/2-1-2.png" alt="Figure. 2" width="50%" />
 
 
 
@@ -52,13 +56,13 @@ Machine Learning tasks can be deployed in Kubernetes clusters via KubeFlow frame
 
 **<u>Tips for defense:</u>** Developers and maintainers should be familiar with containers' common application scenarios and corresponding defensive techniques. As for relevent techniques, we refer interested readers to the Kubernetes threatening models **[8]** released by Microsoft. 
 
-<img src="img/2-2-1.png" alt="Figure. 3" style="zoom:33%;" /> <img src="img/2-2-2.png" alt="Figure. 3" style="zoom:33%;" />
+<img src="img/2-2-1.png" alt="Figure. 3" width="50%" /> <img src="img/2-2-2.png" alt="Figure. 3" width="33%" />
 
 
 
 
 
-### **2.3  Hardware Backdoor Attack**
+### 2.3  Hardware Backdoor Attack
 
 Hardware Backdoors Attacks (also known as Hardware Trojans Attacks) can take place during the trained models being deployed in hardware devices, where adversaries may insert backdoors into the deployed models by making very slight modificaiton to hardware components, e.g. Lookup Table. Those models that contain backdoors can still operate normally on common cases, however, malicious behaviors could be triggered in certain preseted senarios, resulting in stealthy and severe theats.
 
@@ -66,13 +70,13 @@ Mordern integrated circuits usually contain third-party IP cores, which are comm
 
 So far, Hardware Backdoor Attack is still a newly emerging research area, and existing research study on this area is limited. However, in real application scenarios, this type of attack poses a severe threat. For example, attackers can inject backdoors into vision system of an autonomous driving car in the form of hardware Trojans, and the life safety of passengers may be seriously threatened if the backdoors are triggered. Note that, existing backdoors injection usually can only be  implemented by the models' owners. It would be very valuable to study the backdoors injection from outside invaders, since it's a more risky attack scenarios.
 
-<img src="img/2-3-1.png" alt="Figure. 4" style="zoom:67%;" />
+<img src="img/2-3-1.png" alt="Figure. 4" width="50%" />
 
 
 
 
 
-### **2.4 Supply Chains Attack**
+### 2.4 Supply Chains Attack
 
 As shown in **Figure. 5**, attackers can perform Supply Chains Attack in multiple ways, e.g. exploiting open source platform to release malicious pretrained models, constructing backdoors by controlling or modifying software and hardware platforms.
 
@@ -80,6 +84,6 @@ For instance, attackers can inject malicious instructions into model files by ex
 
 **<u>Tips for defense:</u>** Make sure the srouce of model files are trustworthy before loading them, and be cautious in third-party model files.
 
-<img src="img/2-4-1.png" alt="Figure. 5" style="zoom: 50%;" />![Figure. 5](img/2-4-2.png)
+<img src="img/2-4-1.png" alt="Figure. 5" width="50%" />![Figure. 5](img/2-4-2.png)
 
-<img src="img/2-4-3.png" alt="Figure. 5" style="zoom: 67%;" />
+<img src="img/2-4-3.png" alt="Figure. 5" width="67%" />
