@@ -141,19 +141,15 @@ For instance, attackers can inject malicious instructions into model files by ex
 
 <br>
 
-<br>
-
 <span id = "Data-Poisoning"></span>
 
 ### 3.1 Data Poisoning
 
-**<span id = "figure-7">*<u>Figure-7</u>*</span>**
+**<span id = "figure-7">*<u>Figure-7: From left to right are the images of target test that hope to be divided into the wrong ones, the poisoned training sample 1, the poisoned training sample 2 **[[13](#ref-13)]**.</u>*</span>**
 
 ![Figure. 7](img/3-1-1.png)
 
-From left to right are the images of target test that hope to be divided into the wrong ones, the poisoned training sample 1, the poisoned training sample 2 **[[13](#ref-13)]** .
-
-<br><br>
+<br>
 
 Data poisoning refers to the attack of malicious manipulation model by polluting part of training data before training. Generally speaking, poisoning attacks can be divided into two categories: the first type of poisoning attacks hopes that the network will perform well in normal tests, but it makes a wrong judgment on specific images; the second type of poisoning attacks hopes that the network performs poorly in the test set, and even the training is difficult to converge.
 
@@ -163,7 +159,7 @@ The first type of poisoning can be divided into clean sample poisoning and wrong
 
 <br>
 
-The second type of poisoning aims to reduce the overall performance of the model **[[15](#ref-15)]**, which mainly targets at traditional machine learning models such as SVM **[[16](#ref-16)]**, logical regression **[[17](#ref-17)]**. Of course, the second type of poisoning for deep learning can also have a higher success rate [18].
+The second type of poisoning aims to reduce the overall performance of the model **[[15](#ref-15)]**, which mainly targets at traditional machine learning models such as SVM **[[16](#ref-16)]**, logical regression **[[17](#ref-17)]**. Of course, the second type of poisoning for deep learning can also have a higher success rate **[[18](#ref-18)]**.
 
 <br>
 
