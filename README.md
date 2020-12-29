@@ -134,10 +134,11 @@ For instance, attackers can inject malicious instructions into model files by ex
 
 <br><br>
 
+<span id = "data-collection"></span>
 
-## 3. Data collection
+## 3. Data Collection
 
-<span id = "Data-Poisoning"></span>
+<span id = "data-poisoning"></span>
 
 ### 3.1 Data Poisoning
 
@@ -167,7 +168,7 @@ At present, the poison attack to the white box model has been relatively complet
 
 <br>
 
-<span id = "Data-Backdoor-Attack"></span>
+<span id = "data-backdoor-attack"></span>
 
 ### 3.2 Data Backdoor Attack
 
@@ -199,11 +200,11 @@ At present, the trigger of a backdoor attack can reach an invisible level of hum
 
 <br>
 
-<span id = "Model-Training"></span>
+<span id = "model-training"></span>
 
 ## 4. Model Training
 
-<span id = "Data-Recovery-In-Gradient"></span>
+<span id = "data-recovery-in-gradient"></span>
 
 ### 4.1 Data Recovery in Gradient
 
@@ -225,7 +226,7 @@ At present, in order to solve the data privacy and other security problems in mo
 
 <br>
 
-<span id = "Initial-Weight-Modification"></span>
+<span id = "initial-weight-modification"></span>
 
 ### 4.2 Initial Weight Modification
 
@@ -247,7 +248,7 @@ As shown in **[Figure. 11](#figure-11)**, the attacker can initialize the weight
 
 <br>
 
-<span id = "Code-Attack"></span>
+<span id = "code-attack"></span>
 
 ### 4.3 Code Attack
 
@@ -264,19 +265,19 @@ Network trainers often use Tensorboard to monitor the training process of the mo
 
 <br>
 
-<span id = "Training-Backdoor-Attack"></span>
+<span id = "training-backdoor-attack"></span>
 
 ### 4.4 Training Backdoor Attack
 
-Training a good deep learning model often requires a lot of computing resources. Therefore, many users choose to use the third-party platform for model training. This kind of uncontrollable training process also has the risk of being attacked by the back door. Specifically, since the training process is invisible to the users, the (malicious) third-party training platform can modify the training data set submitted by users during the training process, and implant the backdoor in the way similar to the data backdoor attack described in [Section 3.2](#Data-Backdoor-Attack) of this report.
+Training a good deep learning model often requires a lot of computing resources. Therefore, many users choose to use the third-party platform for model training. This kind of uncontrollable training process also has the risk of being attacked by the back door. Specifically, since the training process is invisible to the users, the (malicious) third-party training platform can modify the training data set submitted by users during the training process, and implant the backdoor in the way similar to the data backdoor attack described in [Section 3.2](#data-backdoor-attack) of this report.
 
 <br>
 
-**<u>Defense suggestions:</u>** Avoid using the risk of third-party computing platform for training; after obtaining the trained model, use the back door defense method described in [Section 3.2](#Data-Backdoor-Attack) of this report to check and eliminate the back door.
+**<u>Defense suggestions:</u>** Avoid using the risk of third-party computing platform for training; after obtaining the trained model, use the back door defense method described in [Section 3.2](#data-backdoor-attack) of this report to check and eliminate the back door.
 
 <br>
 
-<span id = "Non-centralized-Scenarios"></span>
+<span id = "non-centralized-scenarios"></span>
 
 ### 4.5 Non-centralized Scenarios
 Federated learning is a distributed learning paradigm proposed to break the data island and realize AI cooperation in non-centralized scenarios. Participants can train the model locally without disclosing their own data and jointly maintain a global model. However, the distributed feature of Federated learning makes it the most likely model to be attacked by data poisoning. Attackers can control multiple participants to poison data locally to achieve the impact on the global model.
@@ -305,11 +306,11 @@ Specifically, as shown in **[Figure. 12](#figure-12)**, attackers can manipulate
 
 <br>
 
-<span id = "Model-Deployment"></span>
+<span id = "model-deployment"></span>
 
 ## 5. Model Deployment
 
-<span id = "Data-Recovery-In-The-Model"></span>
+<span id = "data-recovery-in-the-model"></span>
 
 ### 5.1 Data Recovery in the Model
 
@@ -327,7 +328,7 @@ The research of this kind of attack and defense is still in its infancy, and the
 
 <br>
 
-<span id = "Model-File-Attack"></span>
+<span id = "model-file-attack"></span>
 
 ### 5.2 Model File Attack
 
