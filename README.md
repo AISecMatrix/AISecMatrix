@@ -4,26 +4,26 @@ This is the github repository for ongoing project --- AISecMatrix （AI安全威
 
 
 
-1. [Abstract](#1. Abstract)
+1. [Abstract](#1.Abstract)
 
-2. [Environment Access](#2. Environment Access) 
+2. [Environment Access](#2.Environment Access) 
 
-* 2.1 [Dependent Software Attack](##2.1 Dependent Software Attack)
-* 2.2 [Malicious Access to Docker](##2.2 Malicious Access to Docker)
-* 2.3 [Hardware Backdoor Attack](##2.3 Hardware Backdoor Attack)
-* 2.4 [Supply Chains Attack](##2.4 Supply Chains Attack)
-
-----
-
-1. [Abstract](#1. Abstract)
+* 2.1 [Dependent Software Attack](##2.1.Dependent Software Attack)
+* 2.2 [Malicious Access to Docker](##2.2.Malicious Access to Docker)
+* 2.3 [Hardware Backdoor Attack](##2.3.Hardware Backdoor Attack)
+* 2.4 [Supply Chains Attack](##2.4.Supply Chains Attack)
 
 ----
 
+1. [Abstract](#1.Abstract)
+
+----
 
 
 
 
-## 1. Abstract
+
+## 1.Abstract
 
 In the past few years, AI techniques have gained wide application in a number of fields, including Image Processing, Speech Recognition, Natural Language Processing, etc. Hence, in security critical application senarios, the security issues of AI techniques have increasingly become the focus of research community and industrial corporations. Besides their performance, engineers and users should also take the security problems of the AI systems into account, and ensure the satefy of AI models in different business scenarios, avoiding serious consequences induced by malicious control, influence, fraud, faults and privacy disclosure.
 
@@ -39,13 +39,13 @@ To provide developers and users a better guidance on the security issues of AI s
 
 
 
-## 2. Environment Access
+## 2.Environment Access
 
 
 
 
 
-### 2.1 Dependent Software Attack
+### 2.1.Dependent Software Attack
 
 Machine Learning systems depend on the support from various bottom software frameworks and libraries. Security vulnerabilities hidden in these dependent softwares may pose serious threats to the integral safety of AI systems. Currently, there are various Deep Learning frameworks available, e.g. TensorFlow, Pytorch, etc. These software frameworks will further interact with hundreds of third-party dynamic libraries, including Numpy, OpenCV, etc. Security problems in these components will also severely threaten those systems based on Deep Learning framework. So far, a number of security bugs in dependent libraries of Deep Learning framework have already been reported, including Memory Overflow, Null Pointer Reference, Integer Overflow, Denial-of-Service Attack, etc. **[1,2]** For instance, in the past few years, in OpenCV library, which is one of the most widely used libraries in Deep Learning programs, several security bugs were discovered (especially the CVE-2019-5063 and CVE-2019-5064 reported at the end of 2019, which are quite severe). Based on these bugs, attackers can directly use traditional attack techniques **[3,4]** to bring about the threats of Arbitrary Code Execution to the application of AI systems. Besides, as shown in **Figure. 2**, these dependent libraries also have other types of bugs, potentially inducing Denial-of-Service Attack, Heap Overflow, Integer Overflow, etc., which will also pose severe threats to the safety of the systems.
 
@@ -59,7 +59,7 @@ Meanwhile,  attackers can also inject malicious codes into the model files used 
 
 
 
-### 2.2 Malicious Access to Docker
+### 2.2.Malicious Access to Docker
 
 Machine Learning tasks can be deployed in Kubernetes clusters via KubeFlow framework **[5]**. Since usually the computation nodes for ML tasks have strong calculation capability, these nodes are thus becoming ideal attack targets for adversaries. For instance, attackers may hijack these ML tasks nodes and exploit them for mining. **[6]** One example is, in June 2020, Azure Security Center at Microsoft issued one warning after they detected malicious mining programs installed in Kuberflow by attackers. This security program was induced by improper configurations --- some users modified the default settings for panel access, changing Istio service into Load-Balancer, for convinient access. Such improper configurations made the service public for Internet, so that attackers could access the panel and deploy backdoor containers in the clusters via various methods. For example, with space search engines such as Shodan, Fofa, etc., adversaries can discover Kubernets exposed in public network and thus gaining opportunities to execute malicious codes **[5]**. As shown in **Figure. 3**, adversaries can complete the attacks by loading customized malicious Jupyter images, during the creation of Juputer application services in Kubeflow. Meanwhile, attackers can also directly deploy malicious containers via inserting additional python codes in Jupyter, which may further enlarge the attackers' accessibility to critical data/codes and even harm the integral security of the ML models.
 
@@ -71,7 +71,7 @@ Machine Learning tasks can be deployed in Kubernetes clusters via KubeFlow frame
 
 
 
-### 2.3  Hardware Backdoor Attack
+### 2.3.Hardware Backdoor Attack
 
 Hardware Backdoors Attacks (also known as Hardware Trojans Attacks) can take place during the trained models being deployed in hardware devices, where adversaries may insert backdoors into the deployed models by making very slight modificaiton to hardware components, e.g. Lookup Table. Those models that contain backdoors can still operate normally on common cases, however, malicious behaviors could be triggered in certain preseted senarios, resulting in stealthy and severe theats.
 
@@ -85,7 +85,7 @@ So far, Hardware Backdoor Attack is still a newly emerging research area, and ex
 
 
 
-### 2.4 Supply Chains Attack
+### 2.4.Supply Chains Attack
 
 As shown in **Figure. 5**, attackers can perform Supply Chains Attack in multiple ways, e.g. exploiting open source platform to release malicious pretrained models, constructing backdoors by controlling or modifying software and hardware platforms.
 
