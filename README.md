@@ -37,7 +37,7 @@
 7. [Model Architecture](#Model-Architecture) 
 
 - 7.1 [Query Architecture Stealing](#Query-Architecture-Stealing)
-- 7.2 [Side Channel Architecture Stealing](#Side-Channel-Architecture Stealing)
+- 7.2 [Side Channel Architecture Stealing](#Side-Channel-Architecture-Stealing)
 
 8. [Effect of results](#Effect-of-results)
 
