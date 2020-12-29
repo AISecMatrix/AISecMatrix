@@ -152,8 +152,9 @@ For instance, attackers can inject malicious instructions into model files by ex
 
 <br><br>
 
+<span id = "data-collection"></span>
 
-## 3. Data collection
+## 3. Data Collection
 
 <span id = "Data-Poisoning"></span>
 
