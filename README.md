@@ -9,7 +9,9 @@
 * 2.3 [Hardware Backdoor Attack](#hardware-backdoor-attack)
 * 2.4 [Supply Chains Attack](#supply-chains-attack)
 
-$\Rightarrow $ [Reference](#reference)
+<br><br>
+
+[Reference](#reference)
 
 [Go To End](#end)
 
