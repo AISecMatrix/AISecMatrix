@@ -136,6 +136,41 @@ For instance, attackers can inject malicious instructions into model files by ex
 
 <span id = "Model-Usage"></span>
 
+
+## 3. Data collection
+
+<br>
+
+<span id = "Data-Poisoning"></span>
+
+### 3.1 Data Poisoning
+
+**<span id = "figure-7">*<u>Figure-7: From left to right are the images of target test that hope to be divided into the wrong ones, the poisoned training sample 1, the poisoned training sample 2 **[[13](#ref-13)]**.</u>*</span>**
+
+![Figure. 7](img/3-1-1.png)
+
+<br>
+
+Data poisoning refers to the attack of malicious manipulation model by polluting part of training data before training. Generally speaking, poisoning attacks can be divided into two categories: the first type of poisoning attacks hopes that the network will perform well in normal tests, but it makes a wrong judgment on specific images; the second type of poisoning attacks hopes that the network performs poorly in the test set, and even the training is difficult to converge.
+
+<br>
+
+The first type of poisoning can be divided into clean sample poisoning and wrong sample poisoning. The pollution data released by the former is normal sample in human eyes, so it is hidden and difficult to be detected by the trainer; the latter type of poisoning method uses the wrong labeled data. Its success rate is generally relatively high, but its concealment is insufficient. If the attacker can obtain the model parameters of the target to be attacked, it may only need to introduce a piece of poisoned data to make the model judge the specific image incorrectly. Even if the attacker does not know the specific parameters of the model, the attacker can achieve a 50% success rate of poisoning by using multi model integration to produce pollution data with only 1% poisoning ratio **[[13](#ref-13)]**. As shown in **[Figure. 7](#figure-7)**, modifying several different pictures in the training set for poisoning can make the trained model recognize the specific target graph which is different from the training picture as the category designated by the attacker **[[13](#ref-13)]**.
+
+<br>
+
+The second type of poisoning aims to reduce the overall performance of the model **[[15](#ref-15)]**, which mainly targets at traditional machine learning models such as SVM **[[16](#ref-16)]**, logical regression **[[17](#ref-17)]**. Of course, the second type of poisoning for deep learning can also have a higher success rate **[[18](#ref-18)]**.
+
+<br>
+
+At present, the poison attack to the white box model has been relatively complete, but how to better poison the black box model is still a problem worth studying. How to reduce the proportion of poisoning samples and improve the success rate and stability of black box poisoning is an important research direction in the future.
+
+<br>
+
+**<u>Defense suggestions:</u>** Be alert to the data from unknown sources; Use the algorithm **[[19](#ref-19),[20](#ref-20)]** to detect abnormal samples before training; Preprocess the used data by using yje data augmentation; Try to avoid transfer learning based on completely open model, so as to improve the difficulty of poisoning attack.
+
+<br>
+
 ## 6. Model Usage
 
 <br>
