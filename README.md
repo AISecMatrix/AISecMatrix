@@ -134,7 +134,7 @@ For instance, attackers can inject malicious instructions into model files by ex
 
 <br><br>
 
-<span id = "Model Usage"></span>
+<span id = "Model-Usage"></span>
 
 ## 6. Model Usage
 
@@ -142,7 +142,7 @@ For instance, attackers can inject malicious instructions into model files by ex
 
 <br>
 
-<span id = "Digital Adversarial Attacks"></span>
+<span id = "Digital-Adversarial-Attacks"></span>
 
 ### 6.1 Digital Adversarial Attacks
 
@@ -150,7 +150,7 @@ Adversarial attack is a kind of attack mode aimed at the call link of AI model [
 
 **<span id = "figure-15">*<u>Figure-15</u>*</span>**
 
-![image-20201229131038243](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201229131038243.png)
+![img](https://docimg10.docs.qq.com/image/xmAPmjqSqUxO7qJ1nWaJ4g?w=596&h=227)
 
 **Figure 15**: For the Inception model [54], an example of a test adversarial attack on image classification, the clean image comes from Imagenet.
 
@@ -195,7 +195,7 @@ Except visual and audio attacks, AI systems based on text[81], recommendation sy
 
 <br>
 
-<span id = "Physical Counter Attack"></span>
+<span id = "Physical-Counter-Attack"></span>
 
 ### 6.2 **Physical Counter Attack**
 
@@ -225,7 +225,7 @@ In order to reduce the precision loss caused by the printer. EOT considers the p
 
 <br><br>
 
-<span id = "Model Stealing"></span>
+<span id = "Model-Stealing"></span>
 
 ### 6.3 **Model Stealing**
 
@@ -243,7 +243,7 @@ With the deepening of deep learning network, the training cost is also increasin
 
 <br><br>
 
-<span id = "GPU/CPU overflow destruction"></span>
+<span id = "GPU/CPU-overflow-destruction"></span>
 
 ### 6.4 **GPU/CPU overflow destruction**
 
@@ -257,13 +257,13 @@ However, the research in this field is still in a very early stage, and there is
 
 <br><br>
 
-<span id = "Model Architecture"></span>
+<span id = "Model-Architecture"></span>
 
 ## 7. **Model Architecture**
 
 <br><br>
 
-<span id = "Query Architecture Stealing"></span>
+<span id = "Query-Architecture-Stealing"></span>
 
 ### **7.1  Query Architecture Stealing**
 
@@ -289,7 +289,7 @@ Recently, the research in this field is still in a very early stage, and there i
 
 <br><br>
 
-<span id = "Query Architecture Stealing"></span>
+<span id = "QueryArchitecture-Stealing"></span>
 
 ### **7.2  Side Channel Architecture Stealing**
 
@@ -301,13 +301,13 @@ At present, the research in this field is still in the very early stage, and the
 
 <br><br><br><br>
 
-<span id = "Effect of results"></span>
+<span id = "Effect-of-results"></span>
 
 ## **8. Effect of Results**
 
 <br><br>
 
-<span id = "Model Misjudgment"></span>
+<span id = "Model-Misjudgment"></span>
 
 ### **8.1 Model Misjudgment**
 
@@ -335,7 +335,7 @@ The undirected attack only requires the model to make a wrong judgment on the sa
 
 <br><br>
 
-<span id = "Information Leakage"></span>
+<span id = "Information-Leakage"></span>
 
 ### **8.2  Information Leakage**
 
