@@ -134,8 +134,6 @@ For instance, attackers can inject malicious instructions into model files by ex
 
 <br><br>
 
-<span id = "Model-Usage"></span>
-
 
 ## 3. Data collection
 
@@ -147,7 +145,7 @@ For instance, attackers can inject malicious instructions into model files by ex
 
 **<span id = "figure-7">*<u>Figure-7: From left to right are the images of target test that hope to be divided into the wrong ones, the poisoned training sample 1, the poisoned training sample 2 **[[13](#ref-13)]**.</u>*</span>**
 
-![Figure. 7](img/3-1-1.png)
+<img src="img/3-1-1.png" alt="Figure. 7" width="50%" />![Figure. 7](img/3-1-1.png)
 
 <br>
 
@@ -169,8 +167,6 @@ At present, the poison attack to the white box model has been relatively complet
 
 **<u>Defense suggestions:</u>** Be alert to the data from unknown sources; Use the algorithm **[[19](#ref-19),[20](#ref-20)]** to detect abnormal samples before training; Preprocess the used data by using yje data augmentation; Try to avoid transfer learning based on completely open model, so as to improve the difficulty of poisoning attack.
 
-<br>
-
 <span id = "Data-Backdoor-Attack"></span>
 
 ### 3.2 Data Backdoor Attack
@@ -181,11 +177,11 @@ Backdoor Attack is an emerging attack method against machine learning models. An
 
 **<span id = "figure-8">*<u>Figure-8: Schematic diagram of backdoor attack based on data poisoning **[[21](#ref-21)]**.</u>*</span>**
 
-![Figure. 8](img/3-2-1.png)
+<img src="img/3-2-1.png" alt="Figure. 8" width="50%" />![Figure. 8](img/3-2-1.png)
 
 <br>
 
-Data backdoor attack refers to backdoor implantation through poisoning training data set **[[22](#ref-22),[23](#ref-23),[24](#ref-24)]**. As shown in Figure 8, in the image classification task, some training images will be "tagged" with specific triggers, and then their labels will be converted into target labels specified by attackers. These poisoned samples and benign samples will be used for model training together. Therefore, during the test phase, the normal test samples will be predicted as their corresponding categories by the model, but the test samples containing triggers  (being attacked) will activate the hidden backdoors in the model and make them be divided into target categories.
+Data backdoor attack refers to backdoor implantation through poisoning training data set **[[22](#ref-22),[23](#ref-23),[24](#ref-24)]**. As shown in **[Figure. 8](#figure-8)**, in the image classification task, some training images will be "tagged" with specific triggers, and then their labels will be converted into target labels specified by attackers. These poisoned samples and benign samples will be used for model training together. Therefore, during the test phase, the normal test samples will be predicted as their corresponding categories by the model, but the test samples containing triggers  (being attacked) will activate the hidden backdoors in the model and make them be divided into target categories.
 
 <br>
 
@@ -193,7 +189,7 @@ At present, the trigger of a backdoor attack can reach an invisible level of hum
 
 <br>
 
-Defense suggestions: for backdoor attacks, there are also some corresponding defense methods proposed. The existing backdoor defense methods can be divided into empirical backdoor defense methods and certified backdoor defense methods. The empirical backdoor defense method generally has good performance, but its effectiveness is not guaranteed theoretically; On the other hand, the validity of the authenticated backdoor defense method is guaranteed theoretically under certain assumptions, but its performance is generally weaker than that of the empirical back door defense method in real scenarios. The existing authenticated backdoor defense methods **[[29](#ref-29),[30](#ref-30)]** are mainly based on Random Smoothing technology, while empirical backdoor defense methods have many different ways, which can be divided into the following six basic categories **[[21](#ref-21)]**:
+**<u>Defense suggestions:</u>** for backdoor attacks, there are also some corresponding defense methods proposed. The existing backdoor defense methods can be divided into empirical backdoor defense methods and certified backdoor defense methods. The empirical backdoor defense method generally has good performance, but its effectiveness is not guaranteed theoretically; On the other hand, the validity of the authenticated backdoor defense method is guaranteed theoretically under certain assumptions, but its performance is generally weaker than that of the empirical back door defense method in real scenarios. The existing authenticated backdoor defense methods **[[29](#ref-29),[30](#ref-30)]** are mainly based on Random Smoothing technology, while empirical backdoor defense methods have many different ways, which can be divided into the following six basic categories **[[21](#ref-21)]**:
 * Defense based on preprocessing **[[31](#ref-31),[32](#ref-32),[33](#ref-33)]**: Preprocess the prediction samples before the prediction begins, and then destroy the triggers that may exist in the samples, so that the backdoor cannot be activated successfully.
 * Defense based on model reconstruction **[[31](#ref-31),[34](#ref-34),[35](#ref-35)]**: Reconstruct the model by pruning and retraining, thus destroying the hidden back door in the model.
 * Defense based on trigger reconstruction **[[36](#ref-36),[37](#ref-37),[38](#ref-38)]**: Reconstruct the backdoor trigger in the infected model in certain way, and then eliminate the model backdoor by suppressing related triggers.
@@ -201,6 +197,30 @@ Defense suggestions: for backdoor attacks, there are also some corresponding de
 * Sample filtering **[[42](#ref-42),[43](#ref-43),[44](#ref-44)]**: Filtering out the poisoned / attacked samples to achieve the defensive effect.
 * Toxicity inhibition **[[45](#ref-45),[46](#ref-46)]**: Inhibit the effectiveness of the poisoned samples in training, so that they cannot successfully create the back door.
 
+<span id = "Model-Training"></span>
+
+## 4. Model Training
+
+### 4.1 Data Recovery in Gradient
+
+At present, in order to solve the data privacy and other security problems in model training, distributed distributed is often adopted to train the model in industry. Specifically, the model will be stored in the central server. During each iterative training, the central server transmits the model to the distributed terminal server, where the local data is used to calculate the gradient, and then the gradient is transmitted back to the central server to update the model parameters **[[47](#ref-47)]**. Since the data is always kept at the terminal, the central server cannot directly access the data, which can protect the data privacy. But the latest research shows that it is not subtle enough to transmit gradient information only. As shown in **[Figure. 9](#figure-9)**, the trainer can recover the original training data from the gradient. In this way, even in a distributed computing framework, the central server can achieve the purpose of stealing data. As shown in **[Figure. 10](#figure-10)**, the data recovered in this way has a high degree of authenticity, which may bring great losses to the customers
+
+<br>
+
+**<u>Defense suggestions:</u>** Use larger batch size to calculate the gradient, increase the difficulty of data recovery, and add a certain amount of random noise when returning the gradient for privacy protection.
+
+<br>
+
+**<span id = "figure-9">*<u>Figure-9: Schematic diagram of recovering data from gradient **[[48](#ref-48)]**.</u>*</span>**
+
+<img src="img/4-1-1.png" alt="Figure. 9" width="50%" />![Figure. 9](img/4-1-1.png)
+
+**<span id = "figure-10">*<u>Figure-10: Gradient-based Data Recovery effect in CIFAR-10 Data Set **[[48](#ref-48)]**.</u>*</span>**
+
+<img src="img/4-1-2.png" alt="Figure. 10" width="50%" />![Figure. 10](img/4-1-2.png)
+
+
+<span id = "Model-Usage"></span>
 
 ## 6. Model Usage
 
