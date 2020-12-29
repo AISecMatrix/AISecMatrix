@@ -165,6 +165,8 @@ At present, the poison attack to the white box model has been relatively complet
 
 **<u>Defense suggestions:</u>** Be alert to the data from unknown sources; Use the algorithm **[[19](#ref-19),[20](#ref-20)]** to detect abnormal samples before training; Preprocess the used data by using yje data augmentation; Try to avoid transfer learning based on completely open model, so as to improve the difficulty of poisoning attack.
 
+<br>
+
 <span id = "Data-Backdoor-Attack"></span>
 
 ### 3.2 Data Backdoor Attack
@@ -194,6 +196,8 @@ At present, the trigger of a backdoor attack can reach an invisible level of hum
 * Defense based on model diagnosis **[[39](#ref-39),[40](#ref-40),[41](#ref-41)]**: Directly diagnose whether there is backdoor in the model in some way, and refuse to deploy the model with backdoor.
 * Sample filtering **[[42](#ref-42),[43](#ref-43),[44](#ref-44)]**: Filtering out the poisoned / attacked samples to achieve the defensive effect.
 * Toxicity inhibition **[[45](#ref-45),[46](#ref-46)]**: Inhibit the effectiveness of the poisoned samples in training, so that they cannot successfully create the back door.
+
+<br>
 
 <span id = "Model-Training"></span>
 
@@ -331,7 +335,7 @@ The existing attacks on models are mostly achieved by modifying the data level.�
 
 <br>
 
-Deep learning frameworks such as Pytorch mostly use pickling serialization to store model structures and parameters. Attackers can embed malicious code when the model is saved and execute malicious commands automatically when the model is deserialized. In addition, the attacker can also modify the weight of specific neurons in the model file to crash the model performance **[[12](#ref-12)]** or insert the backdoor function. As shown in **[Figure. 14](#figure-14)**, based on the method in **[[11](#ref-11)]**, attackers can reduce the model accuracy from 70% to 0.1% by flipping 13 bits in 93m bit parameters. The attacker can even hide the malicious binary code content inside the model parameters and execute it at a specific time.
+Deep learning frameworks such as Pytorch mostly use pickling serialization to store model structures and parameters. Attackers can embed malicious code when the model is saved and execute malicious commands automatically when the model is deserialized. In addition, the attacker can also modify the weight of specific neurons in the model file to crash the model performance **[[12](#ref-12)]** or insert the backdoor function. As shown in **[Figure. 14](#figure-14)**, based on the method in **[[11](#ref-11)]**, attackers can reduce the model accuracy from 70% to 0.1% by flipping 13 bits in 93M bit parameters. The attacker can even hide the malicious binary code content inside the model parameters and execute it at a specific time.
 
 <br>
 
