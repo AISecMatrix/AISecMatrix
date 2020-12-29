@@ -137,13 +137,11 @@ For instance, attackers can inject malicious instructions into model files by ex
 
 ## 3. Data collection
 
-<br>
-
 <span id = "Data-Poisoning"></span>
 
 ### 3.1 Data Poisoning
 
-**<span id = "figure-7">*<u>Figure-7: From left to right are the images of target test that hope to be divided into the wrong ones, the poisoned training sample 1, the poisoned training sample 2 **[[13](#ref-13)]**.</u>*</span>**
+**<span id = "figure-7">*<u>Figure-7:</u>* From left to right are the images of target test that hope to be divided into the wrong ones, the poisoned training sample 1, the poisoned training sample 2 **[[13](#ref-13)]**.</span>**
 
 <img src="img/3-1-1.png" alt="Figure. 7" width="50%" />
 
