@@ -627,7 +627,7 @@ Tencent AI Lab is Tencent's enterprise AI Lab, which was established in Shenzhen
 
 <br>
 
-**<span id = "figure-25">*<u>Figure-25: Tencent AI lab
+**<span id = "figure-25">*<u>Figure-25: Tencent AI lab</u>*</span>**
 
 <img src="img/ailab-logo.jpg" alt="Figure. 25" width="50%" />
 
@@ -638,7 +638,7 @@ Zhuque Laboratory of Tencent security platform department focuses on the researc
 
 <br>
 
-**<span id = "figure-26">*<u>Figure-26: Zhuque Laboratory of Tencent Security Platform Department
+**<span id = "figure-26">*<u>Figure-26: Zhuque Laboratory of Tencent Security Platform Department</u>*</span>**
 
 <img src="img/zhuque.png" alt="Figure. 26" width="50%" />
 
