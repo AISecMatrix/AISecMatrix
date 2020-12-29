@@ -171,6 +171,37 @@ At present, the poison attack to the white box model has been relatively complet
 
 <br>
 
+<span id = "Data-Backdoor-Attack"></span>
+
+### 3.2 Data Backdoor Attack
+
+Backdoor Attack is an emerging attack method against machine learning models. An attacker may bury a back door into the model, which may lead to the infected model behaving normally in general. However, when the back door is activated, the output of the model becomes the malicious target set by the attacker. When the training process of the model is not completely controlled, for example, scenarios such as training/pre-training using third-party training data sets, training using third-party computing platforms, modeling provided by the third party, etc., backdoor attacks may occur. Because the model behaves normally until the back door is triggered, this kind of malicious attack behavior is difficult to be detected.
+
+<br>
+
+**<span id = "figure-8">*<u>Figure-8: Schematic diagram of backdoor attack based on data poisoning **[[21](#ref-21)]**.</u>*</span>**
+
+![Figure. 8](img/3-2-1.png)
+
+<br>
+
+Data backdoor attack refers to backdoor implantation through poisoning training data set **[[22](#ref-22),[23](#ref-23),[24](#ref-24)]**. As shown in Figure 8, in the image classification task, some training images will be "tagged" with specific triggers, and then their labels will be converted into target labels specified by attackers. These poisoned samples and benign samples will be used for model training together. Therefore, during the test phase, the normal test samples will be predicted as their corresponding categories by the model, but the test samples containing triggers  (being attacked) will activate the hidden backdoors in the model and make them be divided into target categories.
+
+<br>
+
+At present, the trigger of a backdoor attack can reach an invisible level of human eyes **[[23](#ref-23),[24](#ref-24),[25](#ref-25)]**, and the real label of the poisoned sample can even be completely consistent with the target label **[[23](#ref-23),[24](#ref-24)]**, which makes the backdoor attack more difficult to detect. Besides, in addition to image classification task, backdoor attack has also been proved to have significant attack effect in other different task scenarios **[[26](#ref-26),[27](#ref-27),[28](#ref-28)]**. Therefore, backdoor attack poses a great threat to the security of deep learning model.
+
+<br>
+
+Defense suggestions: for backdoor attacks, there are also some corresponding defense methods proposed. The existing backdoor defense methods can be divided into empirical backdoor defense methods and certified backdoor defense methods. The empirical backdoor defense method generally has good performance, but its effectiveness is not guaranteed theoretically; On the other hand, the validity of the authenticated backdoor defense method is guaranteed theoretically under certain assumptions, but its performance is generally weaker than that of the empirical back door defense method in real scenarios. The existing authenticated backdoor defense methods **[[29](#ref-29),[30](#ref-30)]** are mainly based on Random Smoothing technology, while empirical backdoor defense methods have many different ways, which can be divided into the following six basic categories **[[21](#ref-21)]**:
+* Defense based on preprocessing **[[31](#ref-31),[32](#ref-32),[33](#ref-33)]**: Preprocess the prediction samples before the prediction begins, and then destroy the triggers that may exist in the samples, so that the backdoor cannot be activated successfully.
+* Defense based on model reconstruction **[[31](#ref-31),[34](#ref-34),[35](#ref-35)]**: Reconstruct the model by pruning and retraining, thus destroying the hidden back door in the model.
+* Defense based on trigger reconstruction **[[36](#ref-36),[37](#ref-37),[38](#ref-38)]**: Reconstruct the backdoor trigger in the infected model in certain way, and then eliminate the model backdoor by suppressing related triggers.
+* Defense based on model diagnosis **[[39](#ref-39),[40](#ref-40),[41](#ref-41)]**: Directly diagnose whether there is backdoor in the model in some way, and refuse to deploy the model with backdoor.
+* Sample filtering **[[42](#ref-42),[43](#ref-43),[44](#ref-44)]**: Filtering out the poisoned / attacked samples to achieve the defensive effect.
+* Toxicity inhibition **[[45](#ref-45),[46](#ref-46)]**: Inhibit the effectiveness of the poisoned samples in training, so that they cannot successfully create the back door.
+
+
 ## 6. Model Usage
 
 <br>
@@ -181,13 +212,13 @@ At present, the poison attack to the white box model has been relatively complet
 
 ### 6.1 Digital Adversarial Attacks
 
-Adversarial attack is a kind of attack mode aimed at the call link of AI model [[56](#ref-56), [57](#ref-57), [58](#ref-58), [59](#ref-59), [60](#ref-60)]. By adding malicious noise (also known as attack noise) to the normal samples, which is hard to detect by human eyes, the attacker makes the AI model generate a wrong prediction to the samples (i.e. adversarial samples). Taking the classification model as an example, as shown in **[Figure. 15](#figure-15)**, Inception model [[54](#ref-54)] can accurately predict the clean sample x as "Afghan Hound", but after adding a small amount of anti noise $\epsilon$, the adversarial sample $x+\epsilon$ is wrongly predicted as "compound toe monkey" by the concept. Although the AI model represented by deep neural network has been widely used in many fields such as finance, security, automatic driving and so on, the adversarial attack reveals that the AI model itself still has great security risks.
+Adversarial attack is a kind of attack mode aimed at the call link of AI model [56, 57, 58, 59, 60]. By adding malicious noise (also known as attack noise) to the normal samples, which is hard to detect by human eyes, the attacker makes the AI model generate a wrong prediction to the samples (i.e. adversarial samples). Taking the classification model as an example, as shown in **[Figure. 15](#figure-15)**, Inception model [54] can accurately predict the clean sample x as "Afghan Hound", but after adding a small amount of anti noise $\epsilon$, the adversarial sample $x+\epsilon$ is wrongly predicted as "compound toe monkey" by the concept. Although the AI model represented by deep neural network has been widely used in many fields such as finance, security, automatic driving and so on, the adversarial attack reveals that the AI model itself still has great security risks.
 
 **<span id = "figure-15">*<u>Figure-15</u>*</span>**
 
 ![img](https://docimg10.docs.qq.com/image/xmAPmjqSqUxO7qJ1nWaJ4g?w=596&h=227)
 
-**Figure 15**: For the Inception model [[54](#ref-54)], an example of a test adversarial attack on image classification, the clean image comes from Imagenet.
+**Figure 15**: For the Inception model [54], an example of a test adversarial attack on image classification, the clean image comes from Imagenet.
 
 There are usually two goals for adversarial attacks to achieve: 1) the noise amplitude is so small that it is difficult to be detected by human eyes; 2) the prediction of confrontation samples is inconsistent with normal ones. According to these two characteristics, the method of generating countermeasure samples can be modeled as the following optimization problems:
 
@@ -201,27 +232,28 @@ Where $x$ is the normal sample, and its correct label is $y$ , $x_\epsilon$ is i
 
 <center><b>Figure 16</b>: General expressions and common types of adversarial attacks</center>
 
-White box attack means that the attacker has the knowledge about the structure and weights of the target model $f(\cdot;w)$. In white box attack, the attacker could directly optimize the target function (1) by gradient descent method to obtain the attack sample $x_\epsilon$. But in a real attack scenarios, the structure and weight of the attacked model are usually invisible to the attacker. Black box attack studies how to solve the attack sample  $x_\epsilon$ when the structure and weight of the attacked model cannot be obtained. Due to the structure and parameters of target model $f(\cdot;w)$ are known, the objective function (1) can not be directly derived from the attack noise $x_\epsilon$. However, attackers can usually obtain the prediction output of the model  $f(\cdot;w)$ through API calls such as obtaining the similarity of face comparison through API calls. Attackers access the model through API calls and modify the corresponding input samples according to the returning results to achieve the purpose of attack. One of the most important evaluation standard of black-box attack is the number of API calls required to attack successfully. Up to now, the main methods of black-box attack include migration attacks, gradient estimation, random search, etc. [[62](#ref-62), [63](#ref-63), [64](#ref-64), [65](#ref-65), [66](#ref-66), [67](#ref-67), [68](#ref-68), [69](#ref-69), [70](#ref-70), [71](#ref-71)]. Among these attacks, migration attacks obtain attack samples by constructing alternative models and performing white-box attacks on the alternative models, and then use the attack samples to directly attack the black-box model [[69](#ref-69)]. Besides, the methods based on migration attack can achieve a certain outcome on non-target attack, but do not perform well on target attack. As for gradient estimation, it refers to estimating the gradient of the black-box model $f(\cdot;w)$ with respect to $x_\epsilon$ and using the gradient descent method to find out the attack samples [[62](#ref-62),[72](#ref-72)]. Such as zero-order optimization algorithm, the core of gradient estimation is how to efficiently estimate the gradient of the black box model. For random search, it is also a black box attack method which has been widely studied in recent. Random search usually combines some prior knowledge to improve the search efficiency. For instance, the prior knowledge could be a successful attack noise usually occurs on the boundary of feasible region. At present, it has successfully solved many tasks such as image classification [[62](#ref-62),[71](#ref-71)], face recognition [[63](#ref-63)], video detection [[64](#ref-64)] by means of black box attack. For example, for CIFAR-10 [[74](#ref-74)] image classification task, an average of 44 API calls can realize non-target attack for Densenet classification model, and an average of 787 API calls for target attack [[71](#ref-71)].
+White box attack means that the attacker has the knowledge about the structure and weights of the target model $f(\cdot;w)$. In white box attack, the attacker could directly optimize the target function (1) by gradient descent method to obtain the attack sample $x_\epsilon$. But in a real attack scenarios, the structure and weight of the attacked model are usually invisible to the attacker. Black box attack studies how to solve the attack sample  $x_\epsilon$ when the structure and weight of the attacked model cannot be obtained. Due to the structure and parameters of target model $f(\cdot;w)$ are known, the objective function (1) can not be directly derived from the attack noise $x_\epsilon$. However, attackers can usually obtain the prediction output of the model  $f(\cdot;w)$ through API calls such as obtaining the similarity of face comparison through API calls. Attackers access the model through API calls and modify the corresponding input samples according to the returning results to achieve the purpose of attack. One of the most important evaluation standard of black-box attack is the number of API calls required to attack successfully. Up to now, the main methods of black-box attack include migration attacks, gradient estimation, random search, etc. [62, 63, 64, 65, 66, 67, 68, 69, 70, 71]. Among these attacks, migration attacks obtain attack samples by constructing alternative models and performing white-box attacks on the alternative models, and then use the attack samples to directly attack the black-box model [69]. Besides, the methods based on migration attack can achieve a certain outcome on non-target attack, but do not perform well on target attack. As for gradient estimation, it refers to estimating the gradient of the black-box model $f(\cdot;w)$ with respect to $x_\epsilon$ and using the gradient descent method to find out the attack samples [62,72]. Such as zero-order optimization algorithm, the core of gradient estimation is how to efficiently estimate the gradient of the black box model. For random search, it is also a black box attack method which has been widely studied in recent. Random search usually combines some prior knowledge to improve the search efficiency. For instance, the prior knowledge could be a successful attack noise usually occurs on the boundary of feasible region. At present, it has successfully solved many tasks such as image classification [62,71], face recognition [63], video detection [64] by means of black box attack. For example, for CIFAR-10 [74] image classification task, an average of 44 API calls can realize non-target attack for Densenet classification model, and an average of 787 API calls for target attack [71].
 
 In the process of black-box attack, the training data, model structure, model parameters, and other information of the target model are not needed, and the attack is only realized through API calls. The black-box attack is more consistent with the real application scenario. However, successful black box attacks usually require a large amount of API calls, especially for complex AI models. For instance, the face comparison model, usually takes thousands of API calls to generate invisible adversarial noise by black-box attack. This large number of API calls can be easily defended by the target model. The The research hotspot of black box attacks is how to combine prior knowledge to reduce the amount of API calls needed for successful attack. If the number of API calls is reduced from thousands of times to less than 100 times, there will be great security risks to the real AI system.
 
-At present, adversarial attacks are mainly concentrated in the field of computer vision[[75](#ref-75)], but there are also some adversarial attacks attempt on speech system [[76](#ref-76),[77](#ref-77),[78](#ref-78),[79](#ref-79),[80](#ref-80)]. As shown in **[Figure. 17](#figure-17)**, the attacker adds tiny noises that cannot be felt by human ears to normal speech fragments, so that the speech recognition system recognizes them as completely different content [[61](#ref-61)].
+At present, adversarial attacks are mainly concentrated in the field of computer vision[75], but there are also some adversarial attacks attempt on speech system [76,77,78,79,80]. As shown in **[Figure. 17](#figure-17)**, the attacker adds tiny noises that cannot be felt by human ears to normal speech fragments, so that the speech recognition system recognizes them as completely different content [61].
 
 **<span id = "figure-17">*<u>Figure-17</u>*</span>**
 
 ![img](https://docimg10.docs.qq.com/image/1sLHCUPQ35fI7CDudSkP1w?w=424&h=296)
 
-**Figure 17**: Targeted attack on audio text conversion[[61](#ref-61)]
+<center><b>Figure 17</b>: Targeted attack on audio text conversion[61]
+</center>
 
 Speech recognition system has been widely used in smart home devices, such as smart radio and so on. The attacker may implant adversarial disturbance module in the smart home device to make the user's instructions be misidentified as other instructions, which will bring great security risks. Similarly, audio attack can also be divided into target attack and non-target attack. The former requires that the adversarial audio is recognized as specific content, while the latter only requires that the adversarial audio is mistakenly recognized as others' audio. Because of the sound spectrum complexity, it is more difficult to achieve target attack. In addition, the model and preprocessing operation of voice system are often complex, which also brings great difficulties to attackers. At present, audio attacks mainly focus on white-box attack stage. How to embed the generation process of countermeasure audio into the cascade module of the device, and how to generate the real-time countermeasure audio are potential research directions.
 
-Except visual and audio attacks, AI systems based on text[[81](#ref-81)], recommendation system[[82](#ref-82)], reinforcement learning[[83](#ref-83)], retrieval[[58](#ref-58)] and other technologies may also be attacked by adversarial samples.
+Except visual and audio attacks, AI systems based on text[81], recommendation system[82], reinforcement learning[83], retrieval[58] and other technologies may also be attacked by adversarial samples.
 
 **<u>Tips for defense:</u>** faced with the threat of confrontational attacks, feasible defense suggestions include:
 
 - Analyze the factors that affect the robustness of the model from the model structure level, and design a more robust model structure.
 - Analyze the robust and non robust features contained in the training data from the data level, and try to fit the robust features during training.
-- Analyze the reason of confrontation samples from the training mechanism, and get a more robust model through confrontation training [[56](#ref-56)].
+- Analyze the reason of confrontation samples from the training mechanism, and get a more robust model through confrontation training [56].
 - In the model deployment phase, steps such as confrontation detection, image preprocessing (coding, compression, affine transformation, etc.) are added to resist the attack.
 - Limit API access frequency to prevent black box attacks based on API calls.
 
@@ -239,11 +271,12 @@ At present, most of the counter attacks occur in the digital space, that is, dir
 
 ![img](https://docimg10.docs.qq.com/image/swv8n_0DBa-wxqyHxxtKyQ?w=188&h=193)
 
-**Figure 18**: Traffic sign sticker attack, image from literature [[84](#ref-84)]
+<center><b>Figure 18</b>: Traffic sign sticker attack, image from literature [84]
+</center>
 
-At present, the typical physical attack method is to put a special attack sticker on the real object to achieve the purpose of attack [[84](#ref-84),[85](#ref-85),[86](#ref-86),[87](#ref-87),[88](#ref-88),[89](#ref-89),[90](#ref-90),[91](#ref-91),[92](#ref-92)]. Physical attacks against object recognition systems are studied in [[84](#ref-84)]. As shown in **[Figure. 18](#figure-18)**, by putting a specific black and white attack sticker on the stop sign, the classifier can wrongly identify the stops sign as a speed limit sign, which poses a great security risk to the automatic driving system. Reference [[84](#ref-84)] studied the physical attack against the face recognition system. By generating special eyeglass frame stickers to deceive the face recognition system, it brought great security risks to face security, face payment and other systems.
+At present, the typical physical attack method is to put a special attack sticker on the real object to achieve the purpose of attack [84,85,86,87,88,89,90,91,92]. Physical attacks against object recognition systems are studied in [84]. As shown in **[Figure. 18](#figure-18)**, by putting a specific black and white attack sticker on the stop sign, the classifier can wrongly identify the stops sign as a speed limit sign, which poses a great security risk to the automatic driving system. Reference [85] studied the physical attack against the face recognition system. By generating special eyeglass frame stickers to deceive the face recognition system, it brought great security risks to face security, face payment and other systems.
 
-Since it is impossible to model and optimize noise iteratively in physical space, physical attacks are usually accomplished by migration learning. That is to say, firstly, the surrogate model is constructed and the attack noise is generated in the digital space. Secondly, the attack noise is printed and pasted on the specific object for physical space attack. Therefore, physical attack involves the conversion process from digital space to physical space. Due to the problem of printer accuracy, there are usually some color distortion in the process of image printing in digital space, and there are different physical environments in the process of camera capture and re acquisition, The variation of lighting conditions, shooting angle and shooting distance makes the difference between the anti noise in digital space and that after printing and re acquisition, which leads to the successful attack of anti noise in digital space. When the anti noise acts on the physical space, the attack effect is usually limited. The key point of physical attack is to explore how to improve the robustness of anti noise to physical environment changes. At present, the commonly used physical attack methods usually consider the printer non printability score (NPS) [[85](#ref-85)] constraint and fusion of different expectation over transformation (EOT)[[86](#ref-86)]. NPS calculates a set of pixels range set S that the printer can print in advance, and then constrains the attack noise as much as possible in the process of solving the attack noise.
+Since it is impossible to model and optimize noise iteratively in physical space, physical attacks are usually accomplished by migration learning. That is to say, firstly, the surrogate model is constructed and the attack noise is generated in the digital space. Secondly, the attack noise is printed and pasted on the specific object for physical space attack. Therefore, physical attack involves the conversion process from digital space to physical space. Due to the problem of printer accuracy, there are usually some color distortion in the process of image printing in digital space, and there are different physical environments in the process of camera capture and re acquisition, The variation of lighting conditions, shooting angle and shooting distance makes the difference between the anti noise in digital space and that after printing and re acquisition, which leads to the successful attack of anti noise in digital space. When the anti noise acts on the physical space, the attack effect is usually limited. The key point of physical attack is to explore how to improve the robustness of anti noise to physical environment changes. At present, the commonly used physical attack methods usually consider the printer non printability score (NPS) [85] constraint and fusion of different expectation over transformation (EOT) [86]. NPS calculates a set of pixels range set S that the printer can print in advance, and then constrains the attack noise as much as possible in the process of solving the attack noise.
 
 **<span id = "figure-19">*<u>Figure-19</u>*</span>**
 
@@ -264,7 +297,7 @@ In order to reduce the precision loss caused by the printer. EOT considers the p
 
 With the deepening of deep learning network, the training cost is also increasing. Good performance models have become an important core property of companies/research institutions. In order to protect the model and open the functions to the public, relevant organizations often deploy the model in the cloud and open the API to users to realize "machine learning as a service" (MLaaS). However, recent studies show that attackers can query the output of the network by calling the API many times, and then steal the function of the model. The specific principle is shown in **[Figure. 19](#figure-19)**.
 
-[[94](#ref-94)] is the first time to propose the model of stealing through API, which opens up the research work of this attack direction. However, [[94](#ref-94)] can steal a smaller model. In order to alleviate this problem, [[95](#ref-95)] proposed a method that can steal a slightly larger model. In addition, [[93](#ref-93)] explored the conditions and factors of model stealing in detail, and realized large-scale network stealing with reinforcement learning. [[96](#ref-96)] using adversarial attack, the number of queries needed to steal is significantly reduced, and the models of famous platforms are successfully stolen with low cost.
+[94] is the first time to propose the model of stealing through API, which opens up the research work of this attack direction. However, [94] can steal a smaller model. In order to alleviate this problem, [95] proposed a method that can steal a slightly larger model. In addition, [93] explored the conditions and factors of model stealing in detail, and realized large-scale network stealing with reinforcement learning. [96] using adversarial attack, the number of queries needed to steal is significantly reduced, and the models of famous platforms are successfully stolen with low cost.
 
 **<u>Tips for defense:</u>** Limit the number of user queries, only output results, and hide the output details of the model.
 
@@ -272,7 +305,7 @@ With the deepening of deep learning network, the training cost is also increasin
 
 ![img](https://docimg8.docs.qq.com/image/WQFPEGezckuetO7Zfs3uJw?w=616&h=71)
 
-<b>Figure 20</b>: Memory space diagram of neural network runtime [[97](#ref-97)]. Attackers can read and write arbitrary address through memory overflow vulnerability, and then attack the model by modifying the model parameters.
+<b>Figure 20</b>: Memory space diagram of neural network runtime [97]. Attackers can read and write arbitrary address through memory overflow vulnerability, and then attack the model by modifying the model parameters.
 
 <br><br>
 
@@ -280,7 +313,7 @@ With the deepening of deep learning network, the training cost is also increasin
 
 ### 6.4 **GPU/CPU overflow destruction**
 
-At present, most of the attacks against AI systems are based on data and algorithms, and there are also some security problems in memory. Attackers can construct precise memory overflows for specific GPUs. For example, CUDA memory model supported by NVIDIA graphics card can cover some neuron information in neural network through memory overflow, which makes the prediction of network model deviate. The GitHub project [[97](#ref-97)] mentions such an attack mode. Specifically, a typical computer vision application will input all images into neural network for preprocessing before classification. In order to speed up the processing, researchers will load images and models into DRAM. Because the preprocessing process needs to be able to modify the image and the model is generally large, which will lead to both using global memory, resulting in the memory model structure in **[Figure. 20](#figure-20)**.
+At present, most of the attacks against AI systems are based on data and algorithms, and there are also some security problems in memory. Attackers can construct precise memory overflows for specific GPUs. For example, CUDA memory model supported by NVIDIA graphics card can cover some neuron information in neural network through memory overflow, which makes the prediction of network model deviate. The GitHub project [97] mentions such an attack mode. Specifically, a typical computer vision application will input all images into neural network for preprocessing before classification. In order to speed up the processing, researchers will load images and models into DRAM. Because the preprocessing process needs to be able to modify the image and the model is generally large, which will lead to both using global memory, resulting in the memory model structure in **[Figure. 20](#figure-20)**.
 
 Obviously, an attacker can override the network model if he can overflow the memory allocated to the image. Once the parameters of the covered model can be accurately controlled, then the neural network can be transformed into an invalid network or even a backdoor network by attackers, causing a serious threat.
 
@@ -310,13 +343,15 @@ Recently, the research in this field is still in a very early stage, and there i
 
 ![img](https://docimg5.docs.qq.com/image/sy3d3Q-JWLEIovafXgq54w?w=598&h=154)
 
-**Figure 21**: Query architecture theft [[101](#ref-101)]
+<center><b>Figure 21</b>: Query architecture theft [101]
+</center>
 
 **<span id = "figure-22">*<u>Figure-22</u>*</span>**
 
 ![img](https://docimg1.docs.qq.com/image/wRbVryfWxeOzE250EQIHKA?w=619&h=160)
 
-**Figure 22**: Side channel architecture theft result [[102](#ref-102)]
+<center><b>Figure 22</b>: Side channel architecture theft result [102]
+</center>
 
 <br><br>
 
@@ -324,7 +359,7 @@ Recently, the research in this field is still in a very early stage, and there i
 
 ### **7.2  Side Channel Architecture Stealing**
 
-Side channel attack refers to the attack that uses power, time consumption or electromagnetic radiation to obtain information, rather than through brute force or theoretical weakness in the algorithm. [[102](#ref-102)] using the idea of side channel attack. As long as the attacker and the victim are on the same host and use the same deep learning framework, the attacker can recover the execution order of specific commands in one reasoning of the model by monitoring the cache, and then deduce the network structure or super parameters. This kind of attack can achieve high accuracy, as shown in **[Figure. 22](#figure-22)**.
+Side channel attack refers to the attack that uses power, time consumption or electromagnetic radiation to obtain information, rather than through brute force or theoretical weakness in the algorithm. [102] using the idea of side channel attack. As long as the attacker and the victim are on the same host and use the same deep learning framework, the attacker can recover the execution order of specific commands in one reasoning of the model by monitoring the cache, and then deduce the network structure or super parameters. This kind of attack can achieve high accuracy, as shown in **[Figure. 22](#figure-22)**.
 
 Attackers can steal the structure information of the model through the side channel architecture, and then train the reconstructed architecture on the data set to steal the function of the target model, which seriously infringes the privacy and intellectual property rights of professional algorithms deployed by enterprises, and causes serious business losses for enterprises.
 
@@ -348,19 +383,21 @@ The most direct impact of AI attack is to make the model generate wrong predicti
 
 ![img](https://docimg9.docs.qq.com/image/fqwGKvO-UhReZFBVDzh_lg?w=572&h=331)
 
-**Figure 23**: Schematic diagram of the misjudgment result of the target detection network [[103](#ref-103)]
+<center><b>Figure 23</b>: Schematic diagram of the misjudgment result of the target detection network [103]
+</center>
 
-In the non-directional attack, the attacker wants to confuse the judgment of the network, reduce the confidence score of the decision, and even make a wrong decision. For example, in the face recognition scene, the attacker can make a pair of originally similar faces fail to match [[104](#ref-104)]; in the target detection, the attacker can make the object not be detected [[105](#ref-105)], or be recognized as another object; in the recommendation system, the attacker can make the system give a completely unrelated recommendation [[106](#ref-106)].
+In the non-directional attack, the attacker wants to confuse the judgment of the network, reduce the confidence score of the decision, and even make a wrong decision. For example, in the face recognition scene, the attacker can make a pair of originally similar faces fail to match [104]; in the target detection, the attacker can make the object not be detected [105], or be recognized as another object; in the recommendation system, the attacker can make the system give a completely unrelated recommendation [106].
 
-At present, for the depth system of different tasks, it is easy to find the confrontation samples [[107](#ref-107),[108](#ref-108),[109](#ref-109),[92](#ref-92)] with inconsistent judgment of human and system, so as to realize the non-directional attack. These counter samples are almost the same as the original samples, but they can make the output of the network change dramatically. The existence of adversarial samples causes great trouble and security risk to the users of the system. In addition, these attacks have certain migration ability. In the example in **[Figure. 23](#figure-23)**, the adversarial samples generated by the Mask R-CNN model can also migrate to attack the other five models. As a result, the model can not recognize the computer, keyboard and other objects in the picture, and it will give the wrong prediction result "bed".
+At present, for the depth system of different tasks, it is easy to find the confrontation samples [107,108,109,92] with inconsistent judgment of human and system, so as to realize the non-directional attack. These counter samples are almost the same as the original samples, but they can make the output of the network change dramatically. The existence of adversarial samples causes great trouble and security risk to the users of the system. In addition, these attacks have certain migration ability. In the example in **[Figure. 23](#figure-23)**, the adversarial samples generated by the Mask R-CNN model can also migrate to attack the other five models. As a result, the model can not recognize the computer, keyboard and other objects in the picture, and it will give the wrong prediction result "bed".
 
-The undirected attack only requires the model to make a wrong judgment on the sample, while the directed attack further requires the model to make a specific wrong judgment. As shown in **[Figure. 24](#figure-24)**, the five pre trained models on Imagenet can correctly predict the clean samples. However, the attacker can make three networks output the specified error result "bonnet" [[110](#ref-110)] by imposing a small disturbance on the image. In face recognition, the attacker can generate counter disturbance in a similar way, which makes the model judge the visitor to be an administrator with high authority, resulting in serious security crisis. At present, the more harmful black-box directed attack is also widely studied.
+The undirected attack only requires the model to make a wrong judgment on the sample, while the directed attack further requires the model to make a specific wrong judgment. As shown in **[Figure. 24](#figure-24)**, the five pre trained models on Imagenet can correctly predict the clean samples. However, the attacker can make three networks output the specified error result "bonnet" [110] by imposing a small disturbance on the image. In face recognition, the attacker can generate counter disturbance in a similar way, which makes the model judge the visitor to be an administrator with high authority, resulting in serious security crisis. At present, the more harmful black-box directed attack is also widely studied.
 
 **<span id = "figure-24">*<u>Figure-24</u>*</span>**
 
 ![img](https://docimg6.docs.qq.com/image/rzbL4Ui3NTnIIRmHsamUYA?w=500&h=383)
 
-Figure 24: Directed confrontation attack [[110](#ref-110)]
+<center><b>Figure 24</b>: Directed confrontation attack [110]
+</center>
 
 <br><br>
 
