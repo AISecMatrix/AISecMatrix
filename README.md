@@ -384,7 +384,7 @@ Adversarial attack is a kind of attack mode aimed at the call link of AI model [
 
 **<span id = "figure-15">*<u>Figure-15</u>*</span>**
 
-![img](https://docimg10.docs.qq.com/image/xmAPmjqSqUxO7qJ1nWaJ4g?w=596&h=227)
+<img src="img/inception-attack.png" alt="Figure. 21" width="75%" />
 
 **Figure 15**: For the Inception model [54], an example of a test adversarial attack on image classification, the clean image comes from Imagenet.
 
@@ -396,7 +396,7 @@ Where $x$ is the normal sample, and its correct label is $y$ , $x_\epsilon$ is i
 
 **<span id = "figure-16">*<u>Figure-16</u>*</span>**
 
-![img](https://docimg4.docs.qq.com/image/MabTJoicpupDaNO_U3yI-w?w=617&h=545)
+<img src="img/attack-types.png" alt="Figure. 21" width="70%" />
 
 <center><b>Figure 16</b>: General expressions and common types of adversarial attacks</center>
 
@@ -408,7 +408,7 @@ At present, adversarial attacks are mainly concentrated in the field of computer
 
 **<span id = "figure-17">*<u>Figure-17</u>*</span>**
 
-![img](https://docimg10.docs.qq.com/image/1sLHCUPQ35fI7CDudSkP1w?w=424&h=296)
+<img src="img/6-2-1.png" alt="Figure. 7" width="50%" />
 
 <center><b>Figure 17</b>: Targeted attack on audio text conversion[61]
 </center>
@@ -437,7 +437,7 @@ At present, most of the counter attacks occur in the digital space, that is, dir
 
 **<span id = "figure-18">*<u>Figure-18</u>*</span>**
 
-![img](https://docimg10.docs.qq.com/image/swv8n_0DBa-wxqyHxxtKyQ?w=188&h=193)
+<img src="img/stopsign.png" alt="Figure. 7" width="50%" />
 
 <center><b>Figure 18</b>: Traffic sign sticker attack, image from literature [84]
 </center>
@@ -448,7 +448,7 @@ Since it is impossible to model and optimize noise iteratively in physical space
 
 **<span id = "figure-19">*<u>Figure-19</u>*</span>**
 
-![img](https://docimg2.docs.qq.com/image/x8Z7YoGU_OF03tKScg4IHQ?w=500&h=275)
+<img src="img/6-4-1.png" alt="Figure. 7"  />
 
 <center><b>Figure 19</b>: Schematic diagram of model stealing
 </center>
@@ -471,7 +471,7 @@ With the deepening of deep learning network, the training cost is also increasin
 
 **<span id = "figure-20">*<u>Figure-20</u>*</span>**
 
-![img](https://docimg8.docs.qq.com/image/WQFPEGezckuetO7Zfs3uJw?w=616&h=71)
+<img src="img/6-5-1.png" alt="Figure. 7"/>
 
 <b>Figure 20</b>: Memory space diagram of neural network runtime [97]. Attackers can read and write arbitrary address through memory overflow vulnerability, and then attack the model by modifying the model parameters.
 
@@ -509,14 +509,13 @@ Recently, the research in this field is still in a very early stage, and there i
 
 **<span id = "figure-21">*<u>Figure-21</u>*</span>**
 
-![img](https://docimg5.docs.qq.com/image/sy3d3Q-JWLEIovafXgq54w?w=598&h=154)
+<img src="img/7-1-1.png" alt="Figure. 21" width="50%" /><img src="img/7-1-1-5.png" alt="Figure. 21" width="50%" />
 
 <center><b>Figure 21</b>: Query architecture theft [101]
 </center>
-
 **<span id = "figure-22">*<u>Figure-22</u>*</span>**
 
-![img](https://docimg1.docs.qq.com/image/wRbVryfWxeOzE250EQIHKA?w=619&h=160)
+<img src="img/7-1-2.png" alt="Figure. 21" />
 
 <center><b>Figure 22</b>: Side channel architecture theft result [102]
 </center>
@@ -549,7 +548,7 @@ The most direct impact of AI attack is to make the model generate wrong predicti
 
 **<span id = "figure-23">*<u>Figure-23</u>*</span>**
 
-![img](https://docimg9.docs.qq.com/image/fqwGKvO-UhReZFBVDzh_lg?w=572&h=331)
+<img src="img/8-1-1.png" alt="Figure. 23"/>
 
 <center><b>Figure 23</b>: Schematic diagram of the misjudgment result of the target detection network [103]
 </center>
@@ -562,7 +561,7 @@ The undirected attack only requires the model to make a wrong judgment on the sa
 
 **<span id = "figure-24">*<u>Figure-24</u>*</span>**
 
-![img](https://docimg6.docs.qq.com/image/rzbL4Ui3NTnIIRmHsamUYA?w=500&h=383)
+<img src="img/8-1-2.png" alt="Figure. 24" width="75%" />
 
 <center><b>Figure 24</b>: Directed confrontation attack [110]
 </center>
