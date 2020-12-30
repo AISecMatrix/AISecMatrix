@@ -648,7 +648,7 @@ Zhuque Laboratory of Tencent security platform department focuses on the researc
 
 **<span id = "figure-27">*<u>Figure-27: The Chinese University of Hong Kong, Shenzhen</u>*</span>**
 
-<img src="img/CUHKSZ.jpg" alt="Figure. 27" width="%" />
+<img src="img/CUHKSZ.jpg" alt="Figure. 27" width="50%" />
 
 <br>
 
