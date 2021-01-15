@@ -342,7 +342,7 @@ The research of this kind of attack and defense is still in its infancy, and the
 
 **<span id = "figure-13">*<u>Figure-13: Model-based data recovery mechanism **[[53](#ref-53)]**.</u>*</span>**
 
-<img src="img/5-1-1.png" alt="Figure. 13" width="50%" />
+<img src="img/5-1-1.png" alt="Figure. 13" width="80%" />
 
 <br>
 
